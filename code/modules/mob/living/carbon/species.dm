@@ -1240,6 +1240,11 @@ var/list/has_died_as_golem = list()
 				O.stabilized = TRUE
 				O.loc = null
 
+/datum/species/blob
+	name = "Blob"
+	icobase = 'icons/mob/human_races/r_blob.dmi'
+	deform = 'icons/mob/human_races/r_blob.dmi'
+
 /datum/species/insectoid
 	name = "Insectoid"
 	icobase = 'icons/mob/human_races/r_insectoid.dmi'

@@ -40,6 +40,8 @@
 
 #define isslimeperson(A) (ishuman(A) && istype(A:species, /datum/species/slime))
 
+#define isblobperson(A) (ishuman(A) && istype(A:species, /datum/species/blob))
+
 #define ishorrorform(A) (ishuman(A) && istype(A:species, /datum/species/horror))
 
 #define istruevampire(A)  (ishuman(A) && isvampire(A) && istype(A:species, /datum/species/vampire))
