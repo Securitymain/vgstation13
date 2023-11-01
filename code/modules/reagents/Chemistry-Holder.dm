@@ -655,7 +655,7 @@ trans_to_atmos(var/datum/gas_mixture/target, var/amount=1, var/multiplier=1, var
 			else
 				custom_pain_msg = "Pain sears [which_organ ? " your " + which_organ.display_name : ""]!"
 			H.custom_pain(custom_pain_msg, post_mod_predicted_dmg >= SCALD_AGONIZING, post_mod_predicted_dmg >= SCALD_PAINFUL)
-		L.apply_effect(burn_dmg * 5, AGONY) //pain
+		L.apply_effect(burn_dmg, AGONY) //pain
 		L.apply_damage(burn_dmg, BURN, which_organ)
 
 #undef SCALD_PAINFUL
@@ -1211,18 +1211,18 @@ trans_to_atmos(var/datum/gas_mixture/target, var/amount=1, var/multiplier=1, var
 
 		goto reactions_check
 
-		temperature_equalization_unsimmed_air
+		temperature_equalization_unsimmed_air:
 		//If the air is unsimulated we consider the air to have infinite thermal mass so the equalization temperature is the air temperature.
 		chem_temp = the_air.temperature
 
 		goto reactions_check
 
-		temperature_equalization_simmed_air
+		temperature_equalization_simmed_air:
 		//If the air is simulated we consider the thermal mass of the air.
 		chem_temp = (total_thermal_mass * chem_temp + air_thermal_mass * the_air.temperature) / (total_thermal_mass + air_thermal_mass) //Use the original values in case something went wrong.
 		the_air.temperature = chem_temp
 
-		reactions_check
+		reactions_check:
 		if(skip_flags & SKIP_RXN_CHECK_ON_HEATING)
 			return
 		handle_reactions()
