@@ -47,6 +47,9 @@
 	if(is_empty())
 		update_icon() //we just got emptied, so let's update our icon once, if only to remove the ice overlay.
 
+	if(is_empty())
+		update_icon() //we just got emptied, so let's update our icon once, if only to remove the ice overlay.
+
 /obj/item/weapon/reagent_containers/food/drinks/proc/try_consume(mob/user)
 	if(!is_open_container())
 		to_chat(user, "<span class='warning'>You can't, \the [src] is closed.</span>")//Added this here and elsewhere to prevent drinking, etc. from closed drink containers. - Hinaichigo
@@ -83,6 +86,7 @@
 		H.audible_scream()
 		H.adjustHalLoss(50)
 		H.vessel.trans_to(reagents,reagents.maximum_volume)
+	update_icon()
 	if (can_flip && (M_SOBER in user.mutations) && (user.a_intent == I_GRAB))
 		if (flipping && (M_CLUMSY in user.mutations) && prob(20))
 			to_chat(user, "<span class='warning'>Your clumsy fingers fail to catch back \the [src].</span>")
@@ -2247,9 +2251,6 @@
 		lit = 1
 		visible_message(flavor_text)
 		flammable = 0
-		name = "Flaming [name]"
-		desc += " Damn that looks hot!"
-		icon_state += "-flamin"
 		update_icon()
 
 /obj/item/weapon/reagent_containers/food/drinks/proc/update_brightness(var/mob/user = null)
