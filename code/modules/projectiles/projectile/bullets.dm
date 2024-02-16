@@ -969,13 +969,6 @@
 	name = "admin buckshot pellet"
 	type_to_fire = /obj/item/projectile/bullet/hecate
 
-/obj/item/projectile/bullet/invisible
-	name = "invisible bullet"
-	icon_state = null
-	damage = 25
-	fire_sound = null
-	embed = 0
-
 /obj/item/projectile/bullet/invisible/on_hit(var/atom/target, var/blocked = 0) //silence the target for a few seconds on hit
 	if (..(target, blocked))
 		var/mob/living/L = target
