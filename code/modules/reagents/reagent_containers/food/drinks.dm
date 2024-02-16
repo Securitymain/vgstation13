@@ -2165,6 +2165,7 @@
 				new /obj/effect/decal/cleanable/ash(get_turf(src))
 				var/turf/loca = get_turf(src)
 				if(loca)
+					new /obj/effect/fire(loca)
 					loca.hotspot_expose(700, 1000,surfaces=istype(loc,/turf))
 			else
 				new /obj/item/weapon/reagent_containers/glass/rag(get_turf(src))
@@ -2251,6 +2252,14 @@
 		lit = 1
 		visible_message(flavor_text)
 		flammable = 0
+		update_icon()
+
+/obj/item/weapon/reagent_containers/food/drinks/blow_act(var/mob/living/user)
+	if(lit)
+		lit = 0
+		visible_message("<span  class='rose'>The light on \the [name] goes out.</span>")
+		processing_objects.Remove(src)
+		set_light(0)
 		update_icon()
 
 /obj/item/weapon/reagent_containers/food/drinks/proc/update_brightness(var/mob/user = null)
