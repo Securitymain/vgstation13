@@ -606,7 +606,7 @@ var/global/list/damage_icon_parts = list()
 			//standing.overlays	+= bloodsies
 			O.overlays += bloodsies
 
-		under_uniform.generate_accessory_overlays(O)
+		under_uniform.generate_accessory_overlays(O, species)
 
 		O.icon = standing
 		O.icon_state = standing.icon_state
@@ -748,7 +748,7 @@ var/global/list/damage_icon_parts = list()
 					actual_gloves.overlays.Remove(actual_gloves.blood_overlay)
 		gloves.screen_loc = ui_gloves
 
-		gloves.generate_accessory_overlays(O)
+		gloves.generate_accessory_overlays(O, species)
 
 		O.icon = standing
 		O.icon_state = standing.icon_state
@@ -989,7 +989,7 @@ var/global/list/damage_icon_parts = list()
 			bloodsies.color = shoes.blood_color
 			O.overlays += bloodsies
 
-		shoes.generate_accessory_overlays(O)
+		shoes.generate_accessory_overlays(O, species)
 
 		O.pixel_x = species.inventory_offsets["[slot_shoes]"]["pixel_x"] * PIXEL_MULTIPLIER
 		O.pixel_y = species.inventory_offsets["[slot_shoes]"]["pixel_y"] * PIXEL_MULTIPLIER
@@ -1109,7 +1109,7 @@ var/global/list/damage_icon_parts = list()
 			//standing.overlays	+= bloodsies
 			O.overlays	+= bloodsies
 
-		head.generate_accessory_overlays(O)
+		head.generate_accessory_overlays(O, species)
 
 		O.icon = standing
 		O.icon_state = standing.icon_state
@@ -1165,7 +1165,7 @@ var/global/list/damage_icon_parts = list()
 					bloodsies.pixel_y = (species.inventory_offsets["[slot_head]"]["pixel_y"] + (2 * i)) * PIXEL_MULTIPLIER + hat.vertical_offset
 					O.overlays	+= bloodsies
 
-				//above.generate_accessory_overlays(O)
+				//above.generate_accessory_overlays(O, species)
 				i++
 
 		obj_to_plane_overlay(O,HEAD_LAYER)
@@ -1288,7 +1288,7 @@ var/global/list/damage_icon_parts = list()
 				//standing.overlays	+= bloodsies
 				O.overlays	+= bloodsies
 
-		wear_suit.generate_accessory_overlays(O)
+		wear_suit.generate_accessory_overlays(O, species)
 
 		O.icon = standing
 		O.icon_state = standing.icon_state
@@ -1363,7 +1363,7 @@ var/global/list/damage_icon_parts = list()
 			//standing.overlays	+= bloodsies
 			O.overlays += bloodsies
 
-		wear_mask.generate_accessory_overlays(O)
+		wear_mask.generate_accessory_overlays(O, species)
 
 		O.icon = standing
 		O.icon_state = standing.icon_state

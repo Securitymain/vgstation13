@@ -72,6 +72,7 @@
 	name = "paramedic webbing"
 	desc = "Sturdy mess of synthcotton belts and buckles. Made to be worn by medical personnel."
 	icon_state = "vest_white"
+	species_fit = list(VOX_SHAPED)
 	_color = "vest_white"
 	storage_slots = 4
 
