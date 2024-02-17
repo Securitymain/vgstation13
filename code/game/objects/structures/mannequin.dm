@@ -799,7 +799,7 @@
 				bloodsies.color		= clothToUpdate.blood_color
 				O.overlays += bloodsies
 
-		clothToUpdate.generate_accessory_overlays(O)
+		clothToUpdate.generate_accessory_overlays(O, species)
 
 		if(istype(clothToUpdate,/obj/item/clothing/head))
 			var/obj/item/clothing/head/hat = clothToUpdate
@@ -837,7 +837,7 @@
 						bloodsies.pixel_y = (2 * i) * PIXEL_MULTIPLIER
 						O.overlays += bloodsies
 
-				//above.generate_accessory_overlays(O)
+				//above.generate_accessory_overlays(O, species)
 				i++
 
 /obj/structure/mannequin/proc/update_icon_hand(var/obj/abstract/Overlays/O,var/index)

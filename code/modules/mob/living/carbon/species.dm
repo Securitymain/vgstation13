@@ -122,6 +122,7 @@ var/global/list/playable_species = list("Human")
 	var/wear_mask_icons     = 'icons/mob/mask.dmi'
 	var/back_icons          = 'icons/mob/back.dmi'
 	var/id_icons            = 'icons/mob/ids.dmi'
+	var/accessory_icons     = 'icons/mob/clothing_accessories.dmi'
 
 
 	//Used in icon caching.
@@ -502,6 +503,7 @@ var/global/list/playable_species = list("Human")
 	wear_suit_icons = 'icons/mob/species/vox/suit.dmi'
 	wear_mask_icons = 'icons/mob/species/vox/masks.dmi'
 //	back_icons      = 'icons/mob/back.dmi'
+	accessory_icons = 'icons/mob/species/vox/clothing_accessories.dmi'
 
 	has_organ = list(
 		"brain" =    /datum/organ/internal/brain,
@@ -776,6 +778,7 @@ var/global/list/playable_species = list("Human")
 	wear_suit_icons = 'icons/mob/species/vox/suit.dmi'
 	wear_mask_icons = 'icons/mob/species/vox/masks.dmi'
 	back_icons      = 'icons/mob/species/vox/back.dmi'
+	accessory_icons = 'icons/mob/species/vox/clothing_accessories.dmi'
 
 	has_mutant_race = 0
 	has_organ = list(

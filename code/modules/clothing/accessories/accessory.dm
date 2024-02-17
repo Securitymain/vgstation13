@@ -91,27 +91,35 @@
 /obj/item/proc/generate_accessory_overlays()
 	return
 
-/obj/item/clothing/generate_accessory_overlays(var/obj/abstract/Overlays/O)
-	if(accessories.len)
-		for(var/obj/item/clothing/accessory/accessory in accessories)
-			var/image/I = image('icons/mob/clothing_accessories.dmi',null,"[accessory._color || accessory.icon_state]")
-			I.color = accessory.color
+/obj/item/clothing/generate_accessory_overlays(var/obj/abstract/Overlays/O, var/datum/species/species = null)
+	if(!accessories.len)
+		return
 
-			for (var/part in accessory.dyed_parts)
-				var/list/dye_data = accessory.dyed_parts[part]
-				var/dye_color = dye_data[1]
-				var/dye_alpha = dye_data[2]
+	for(var/obj/item/clothing/accessory/accessory in accessories)
+		var/accessory_path = ""
+		if (species != null && ((species.name in accessory.species_fit) && has_icon(species.accessory_icons, accessory.icon_state)))
+			accessory_path = species.accessory_icons
+		else
+			accessory_path = 'icons/mob/clothing_accessories.dmi'
 
-				var/_state = accessory.dye_base_iconstate_override
-				if (!_state)
-					_state = accessory.icon_state
+		var/image/I = image(accessory_path, null, "[accessory._color || accessory.icon_state]")
+		I.color = accessory.color
 
-				var/image/worn_overlay = image('icons/mob/clothing_accessories.dmi', null, "[_state]-[part]")
-				worn_overlay.appearance_flags = RESET_COLOR
-				worn_overlay.color = dye_color
-				worn_overlay.alpha = dye_alpha
-				I.overlays += worn_overlay
-			O.overlays += I
+		for (var/part in accessory.dyed_parts)
+			var/list/dye_data = accessory.dyed_parts[part]
+			var/dye_color = dye_data[1]
+			var/dye_alpha = dye_data[2]
+
+			var/_state = accessory.dye_base_iconstate_override
+			if (!_state)
+				_state = accessory.icon_state
+
+			var/image/worn_overlay = image(accessory_path, null, "[_state]-[part]")
+			worn_overlay.appearance_flags = RESET_COLOR
+			worn_overlay.color = dye_color
+			worn_overlay.alpha = dye_alpha
+			I.overlays += worn_overlay
+		O.overlays += I
 
 //Defining this at item level to prevent CASTING HELL
 /obj/item/proc/description_accessories()
